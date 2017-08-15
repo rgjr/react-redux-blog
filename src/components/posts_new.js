@@ -11,17 +11,15 @@ class PostsNew extends Component {
 
     return (
       <div className={className}>
-        <label>{field.label}</label>
-        <input
-          className='form-control'
-          type='text'
-          {...field.input}
-        />
-        <div className='text-help'>
+        <label>
+          {field.label}
+        </label>
+        <input className="form-control" type="text" {...field.input} />
+        <div className="text-help">
           {touched ? error : ''}
         </div>
       </div>
-    )
+    );
   }
 
   onSubmit(values) {
@@ -36,22 +34,26 @@ class PostsNew extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
-          label='Title For Post'
-          name='title'
+          label="Title For Post"
+          name="title"
           component={this.renderField}
         />
         <Field
-          label='Categories'
-          name='categories'
+          label="Categories"
+          name="categories"
           component={this.renderField}
         />
         <Field
-          label='Post Content'
-          name='content'
+          label="Post Content"
+          name="content"
           component={this.renderField}
         />
-        <button type='submit' className='btn btn-primary'>Submit</button>
-        <Link to='/' className='btn btn-danger'>Cancel</Link>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+        <Link to="/" className="btn btn-danger">
+          Cancel
+        </Link>
       </form>
     );
   }
@@ -78,6 +80,4 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
-})(
-  connect(null, { createPost })(PostsNew)
-);
+})(connect(null, { createPost })(PostsNew));
